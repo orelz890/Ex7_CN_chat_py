@@ -133,12 +133,12 @@ class Client:
                                 if data2.decode(FORMAT) == "NACK":
                                     print("Client sent NACK")
                                     client_udp_socket.sendto("NACK".encode(FORMAT), server_udp_address)
-                                    return True
+                                    return
             finally:
                 if data.decode(FORMAT) == "File do not exist!":
                     self.file_to_download = "File do not exist!"
                     print("File do not exist!")
-                    return False
+                    return
 
     # Function that receives the file if it exist in the server. The GUI thread will enter this function until it
     # will get a different request waiting to received the file from the moment the download file will be pressed

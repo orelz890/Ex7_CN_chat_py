@@ -6,6 +6,12 @@ NAME = "orel"
 c = Client(NAME)
 
 
+# ================================================================
+# In order to start the test we need to open the server first!
+# Please open the CMD in this folder and write "py Server.py"
+# Now, we can start the test! :)
+# ================================================================
+
 class Test(unittest.TestCase):
 
     def test_client(self):

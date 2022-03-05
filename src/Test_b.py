@@ -7,8 +7,12 @@ NAME = "aviel"
 c = Client(NAME)
 
 
-# msg = f"connected \n"
-# c.connection(msg)
+# ================================================================
+# In order to start the test we need to open the server first!
+# Please open the CMD in this folder and write "py Server.py"
+# Now, we can start the test! :)
+# ================================================================
+
 
 class Test(unittest.TestCase):
 
@@ -27,6 +31,7 @@ class Test(unittest.TestCase):
         #   Get a file
 
         # File dont exist:
+        time.sleep(0.5)
         c.send_data("!SF", "", "aaa")
         time.sleep(0.5)
         ans = c.client_socket.recv(1024)
@@ -53,13 +58,19 @@ class Test(unittest.TestCase):
         with open("Hello_World2.txt", "rb"):
             self.assertTrue(True)
 
-        # Big file transfer:
+        # ==============================================================================================================
+        # In order to check a big file transfer please add "BigFile.txt" to the server file list and then test the below
+        # ==============================================================================================================
 
-        # c.send_data("!SF", "", "Hello_World.txt")
+        # c.file_to_download = ""
+        # c.file_exist = False
+        # # Big file transfer:
+        #
+        # c.send_data("!SF", "", "BigFile.txt")
         # time.sleep(0.5)
         # ans = c.client_socket.recv(1024)
         # self.assertEqual("ACK", ans.decode(FORMAT))
-        # c.file_to_download = "Hello_World.txt"
+        # c.file_to_download = "BigFile.txt"
         # c.file_exist = True
         # time.sleep(0.5)
         # data, server_udp_address = c.udp_socket.recvfrom(1024)
@@ -72,5 +83,7 @@ class Test(unittest.TestCase):
         #     if ans:
         #         if 0 <= ans <= 2:
         #             flag = False
-        # with open("Hello_World2.txt", "rb"):
+        # with open("BigFile2.txt", "rb"):
         #     self.assertTrue(True)
+        # c.file_to_download = ""
+        # c.file_exist = False
