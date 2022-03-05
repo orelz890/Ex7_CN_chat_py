@@ -1,0 +1,116 @@
+
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+@startuml
+
+Class01 <|-- Class02
+Class03 *-- Class04
+Class05 o-- Class06
+Class07 .. Class08
+Class09 -- Class10
+
+@startuml
+GUI_Thread -- Buttons
+GUI -- GUI_Thread
+GUI -- Receive_Thread
+Buttons -- File_List
+Buttons -- Download_file
+Buttons -- Client_List
+Buttons -- PrivateChat
+Buttons -- NotifyAll
+Buttons -- Connect
+Buttons -- DisConnect
+GUI_Thread --> Client
+Receive_Thread --> Client
+
+Server_Thread -- Server_file
+Server_Thread -- PacketCreator
+Client <--> Server_Thread
+class Client {
+  .. self ..
+    client_socket : socket
+    nickname : str
+    curr_seq_num : int
+    last_ack : int
+    last_data
+  .. functions ..
+  + connection
+  + send_data
+  + receive_message
+  + receive_list
+  + download_file
+  + receive_file
+  + receive_packet
+  + write_to_file
+}
+class Server_Thread {
+  .. self ..
+    server_socket : socket
+    sockets_list : list
+    clients : int
+    names : int
+    files : dict
+    timer : dict
+    port_list : list
+  .. functions ..
+  + receive_message
+  + handler : MainFunction
+  + current_action
+  + disconnect
+  + notify_person
+  + notify_all
+  + send_list
+  + send_files_list
+  + send_file
+  + sending
+  + timer_handler
+}
+class PacketCreator {
+ class ACK
+ class Packet
+ class PacketCreator
+}
+class Server_file {
+..data..
+}
+
+class Client_List {
+..data..
+}
+class File_List {
+..
+}
+class Buttons {
+..
+}
+class Download_file {
+ ..gets file_name..
+}
+class GUI {
+..Visual chat..
+}
+class Connect {
+..
+}
+class DisConnect {
+..
+}
+class NotifyAll {
+..
+}
+class PrivateChat {
+..gets a name..
+}
+class Receive_Thread {
+..
+}
+class GUI_Thread {
+..
+}
+
+
+
+@enduml
